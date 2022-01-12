@@ -36,14 +36,12 @@ return [
         ],
         'brands' => [
             'driver' => 'local',
-            'root' => storage_path('app/brands'),
-            'url' => env('APP_URL').'/brands',
+            'root' => public_path().'/brands',
             'visibility' => 'public',
         ],
         'cars' => [
             'driver' => 'local',
-            'root' => storage_path('app/cars'),
-            'url' => env('APP_URL').'/cars',
+            'root' => public_path().'/cars',
             'visibility' => 'public',
         ],
 

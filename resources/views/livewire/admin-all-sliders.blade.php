@@ -5,9 +5,6 @@
                 <div class="row">
                     <div class="col-md-6">
                         <a wire:click="ShowModal" class="btn btn-outline-success btn-sm">Add New Slider</a>
-
-{{--                        modal--}}
-
                         @if($ShowModalbox)
                             <div class="modal fade show" id="modal-default" style="display: block; padding-right: 16px;" aria-modal="true" role="dialog">
                                 <div class="modal-dialog">
