@@ -51,4 +51,9 @@ class HomeController extends Controller
 
         return view('layouts.userviews.profile-page',compact('user','rents','current_rents','active_rents'));
     }
+    public function CancelRent($id)
+    {
+        Rent::destroy($id);
+        return redirect()->back();
+    }
 }

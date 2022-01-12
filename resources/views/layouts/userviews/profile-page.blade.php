@@ -56,7 +56,7 @@
                                             <td class="text-center" >{{$rent->return_date->format('d M Y')}}</td>
                                             <td class="text-center" ><span class="badge {{$rent->current_rent_status_color}}" style="color: white">{{$rent->current_rent_status}}</span></td>
                                             <td class="text-center" >
-                                                <a class="text-danger" href="#">Cancel</a>
+                                                <a class="text-danger" href="{{ route('rent.cancel',$rent->id) }}">Cancel</a>
                                             </td>
                                         </tr>
                                         @endforeach

@@ -37,6 +37,7 @@ Route::get('/',[HomeController::class,'index'])->name('/');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/profile',[HomeController::class,'Profile'])->name('user.profile');
+    Route::get('/cancel/{id}',[HomeController::class,'CancelRent'])->name('rent.cancel');
 
     Route::group(['middleware' => 'role:admin'], function() {
         Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
@@ -53,6 +54,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/new/car',[DashboardController::class,'AddNewCar'])->name('admin.new.car');
 
         Route::view('/sliders','layouts.adminviews.all_sliders')->name('admin.sliders');
+
+        
 
 
 
