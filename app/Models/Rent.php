@@ -46,4 +46,16 @@ class Rent extends Model
                 '3'=>'bg-danger',
             ][$this->rent_status] ?? "bg-info";
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function rentplace()
+    {
+        return $this->hasOne(RentPlace::class,'id','rent_place_id');
+    }
+    public function returnplace()
+    {
+        return $this->hasOne(RentPlace::class,'id','return_place_id');
+    }
 }

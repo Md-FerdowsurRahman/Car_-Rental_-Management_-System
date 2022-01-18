@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Car Rental Management System- By Rasel - Copy</title>
+    <title>Car Rental Management System- By Ferdows - Copy</title>
     <link rel="stylesheet" href="{{asset('userFiles/assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=cyrillic">
@@ -41,7 +41,8 @@
                     <li class="nav-item btn menu-btn btn-small mobile-nav-styles-li"><a class="nav-link active" href="#">Cars</a></li>
                     <li class="nav-item menu-btn btn-small btn mobile-nav-styles-li"><a class="nav-link" href="#">Rent</a></li>
                     <li class="nav-item menu-btn btn-small btn mobile-nav-styles-li"><a class="nav-link" href="#">Services</a></li>
-                    <li class="nav-item menu-btn btn-small btn mobile-nav-styles-li"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item menu-btn btn-small btn mobile-nav-styles-li">
+                        <a class="nav-link" href="{{route('userview.contact')}}">Contact</a></li>
                     @guest
                     <li class="nav-item btn mobile-nav-styles-li mobile-nav-login ml-4" data-toggle="modal" data-target="#login-modal">
                         <a class="nav-link" href="#">Login</a>

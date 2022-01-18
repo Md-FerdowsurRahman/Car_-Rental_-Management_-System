@@ -8,7 +8,7 @@
                         <div class="m-auto" style="background: rgb(255,255,255);width: 170px;height: 170px;border-radius: 50%;box-shadow: 0px 0px 2px 0px black;">
                             <img class="m-auto" src="{{asset('userFiles/assets/img/boy with mask.png')}}" style="position: relative;max-width: 150px;border-radius: 50%;box-shadow: 1px 1px 1px 3px rgb(243,243,243);top: 6%;left: 6%;">
                         </div>
-                        <h3 class="text-left mt-2 text-center profile-name-heading" style="font-weight: bold;">{{$user->name}}</h3>
+                        <h3 class="mt-2 text-center profile-name-heading" style="font-weight: bold;">{{$user->name}}</h3>
                         <div class="mt-2">
                             <p class="mt-0 mt-md-1 pl-4"><i class="fa fa-envelope-o mr-3"></i>Email :<span>{{$user->email}}</span></p>
                             <p class="mt-0 mt-md-1 pl-4"><i class="fa fa-phone mr-3"></i>Phone Number :<span>{{$user->phone_number}}</span></p>
