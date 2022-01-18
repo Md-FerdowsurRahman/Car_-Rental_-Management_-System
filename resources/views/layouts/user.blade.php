@@ -57,27 +57,27 @@
                 <div class="hidden md:block">
                     <ul class="flex space-x-4 text-gray-500">
                         <li>
-                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="/index.html">
+                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="/">
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="cars.html">
+                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="{{route('cars')}}">
                                 Cars
                             </a>
                         </li>
                         <li>
-                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="rent.html">
+                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="{{route('rent')}}">
                                 Rent
                             </a>
                         </li>
                         <li>
-                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="services.html">
+                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="{{route('services')}}">
                                 Services
                             </a>
                         </li>
                         <li>
-                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="/contact.html">
+                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="{{ route('contact') }}">
                                 Contact
                             </a>
                         </li>

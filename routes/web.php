@@ -35,7 +35,10 @@ Route::get('getform', [CarsController::class, 'getFormData'])->name('getform');
 //})->name('dashboard');
 
 Route::get('/', [HomeController::class, 'index'])->name('/');
-Route::view('/contact', 'layouts.userviews.contact')->name('userview.contact');
+Route::view('/contact', 'layouts.userviews.contact')->name('contact');
+Route::view('/services', 'layouts.userviews.services')->name('services');
+Route::view('/rent', 'layouts.userviews.rent')->name('rent');
+Route::view('/cars', 'layouts.userviews.cars')->name('cars');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [HomeController::class, 'Profile'])->name('user.profile');
     Route::get('/cancel/{id}', [HomeController::class, 'CancelRent'])->name('rent.cancel');
