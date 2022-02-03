@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
-<section class="relative block h-[500px] bg-red-300">
-    <div class="bg-cover bg-center absolute top-0 w-full h-full" style="background-image: url('{{ asset('/images/home_image.jpg') }}');">
+<section class="relative block h-[500px] bg-gray-300">
+    <div class="bg-cover bg-center absolute top-0 w-full h-full" style="background-image: url('{{ asset('/images/audi.png') }}');">
     </div>
 </section>
 <section class="relative py-16 bg-gray-100">
@@ -32,12 +32,10 @@
                             <span class="undefined text-lg leading-none">Email :
                             </span class="text-slate-300">{{ auth()->user()->email }}</span>
                         </div>
-
-                        @livewire('user-edit-section')
                     </div>
                 </div>
 
-                <div x-data="{ openTab: 1 }" class="p-6">
+                <div x-data="{ openTab: 3 }" class="p-6">
                     <ul class="flex justify-center space-x-5 ">
                         <li class="-mb-px mr-1">
                             <a @click.prevent="openTab = 1" class="inline-block rounded-t py-2 px-4 font-semibold" :class="{'bg-blue-400 hover:bg-blue-600 rounded-md text-white':openTab==1}" href="#">Current Rents</a>
