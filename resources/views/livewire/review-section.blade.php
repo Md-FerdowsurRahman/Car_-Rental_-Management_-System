@@ -6,7 +6,7 @@
         @foreach($reviews as $review)
         <div class="flex space-x-2">
             <div class="">
-                <img class="h-12 w-12 rounded-full border" src="{{ asset('/images/boy.png') }}" alt="">
+                <img class="h-12 w-12 rounded-full border" src="{{ $review->user->profile_photo_url }}" alt="">
             </div>
             <div class="w-full">
                 <div class="flex items-center justify-between pr-8">
