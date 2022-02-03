@@ -22,6 +22,7 @@ class UserEditSection extends Component
     {
         $this->validate();
         $this->user->save();
+        $this->emit('profile-updated');
     }
     public function render()
     {
