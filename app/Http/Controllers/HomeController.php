@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rent;
 use Carbon\Carbon;
+use GuzzleHttp\Psr7\Request;
 
 class HomeController extends Controller
 {

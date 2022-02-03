@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-     return view('layouts.adminviews.dashboard');
+        return view('layouts.adminviews.dashboard');
     }
 
     public function viewUsers()
@@ -47,15 +48,35 @@ class DashboardController extends Controller
 
     public function EditCar($id)
     {
-        return view('layouts.adminviews.edit-car',compact('id'));
+        return view('layouts.adminviews.edit-car', compact('id'));
     }
     public function EditBrand($id)
     {
-        return view('layouts.adminviews.edit-brand',compact('id'));
+        return view('layouts.adminviews.edit-brand', compact('id'));
     }
 
-//    public function viewSliders()
-//    {
-//        return view('layouts.adminviews.all_sliders');
-//    }
+    public function ViewMessages()
+    {
+        $messages = Message::orderBy('id', 'DESC')->get();
+        return view('messages',compact('messages'));
+    }
+    public function StoreMessage(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'message' => 'required',
+        ]);
+        Message::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message,
+        ]);
+        return redirect()->route('contact', 'Your_Message_has_been_sent');
+    }
+    public function DeleteMessage(Message $message)
+    {
+        $message->delete();
+        return redirect()->back();
+    }
 }

@@ -29,6 +29,8 @@ Route::get('getform', [CarsController::class, 'getFormData'])->name('getform');
 //})->name('dashboard');
 
 Route::view('/contact', 'layouts.userviews.contact')->name('contact');
+Route::post('/send_message', [DashboardController::class, 'StoreMessage'])->name('message.store');
+
 Route::view('/services', 'layouts.userviews.services')->name('services');
 Route::view('/rent', 'layouts.userviews.rent')->name('rent');
 Route::view('/cars', 'layouts.userviews.cars')->name('cars');
@@ -37,6 +39,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/cancel/{id}', [HomeController::class, 'CancelRent'])->name('rent.cancel');
 
     Route::group(['middleware' => 'role:admin'], function () {
+        Route::post('/message/delete/{message}',[DashboardController::class,'DeleteMessage'])->name('message.delete');
+        Route::get('admin/messages', [DashboardController::class, 'ViewMessages'])->name('admin.messages');
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('/users', [DashboardController::class, 'viewUsers'])->name('admin.users');
