@@ -84,25 +84,35 @@
                     </ul>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    @guest
                     <div class="flex space-x-2">
                         <a class="bg-blue-400  px-6 py-2 rounded text-white" @click.prevent="modal=true" href="">Login</a>
                         <a class="bg-blue-600 0 px-6 py-2 rounded text-white" @click.prevent="open=true" href="">Register</a>
                     </div>
+                    @else
                     <!-- Profile dropdown -->
-                    <!-- <div class="ml-3 relative" x-data="{ profileMenu: false }">
+                    <div class="ml-3 relative" x-data="{ profileMenu: false }">
                         <div>
                             <button @click="profileMenu = !profileMenu" @click.away="profileMenu = false" type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                <img class="h-8 w-8 rounded-full" src="{{ auth()->user()->profile_photo_url }}" alt="">
                             </button>
                         </div>
-                        <div x-show="profileMenu" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="opacity-0 transform scale-90" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Reservation</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-2" id="user-menu-item-1">Settings</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-3">Logout</a>
+                        <div x-cloak x-show="profileMenu" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="opacity-0 transform scale-90" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                            @if (auth()->user()->type === 1)
+                            <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Dashboard</a>
+                            @endif
+                            <a href="{{ route('user.profile') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Profile</a>
+                            <a onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();" href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-3">Logout
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </a>
+
                         </div>
-                    </div> -->
+                    </div>
+                    @endguest
                 </div>
             </div>
         </div>
@@ -124,24 +134,27 @@
                         </button>
 
                         <div class=" w-full ">
-                            <form class="bg-white rounded px-8 pt-6 pb-8 mb-4">
+                            <form method="POST" action="{{ route('login') }}" class="bg-white rounded px-8 pt-6 pb-8 mb-4">
+                                @csrf
                                 <div class="relative mb-4">
                                     <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
                                     <input type="email" id="email" name="email" class="w-full bg-white rounded border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                                 <div class="relative mb-4">
                                     <label for="email" class="leading-7 text-sm text-gray-600">Password</label>
-                                    <input type="password" id="email" name="email" class="w-full bg-white rounded border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="password" id="email" name="password" class="w-full bg-white rounded border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
 
                                 <div class="flex items-center justify-between">
-                                    <button class="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                                    <button class="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                                         Login
                                     </button>
                                     <a @click.prevent="open=true,modal=false" href="#">New here ! <span class="text-blue-400 font-semibold">Register</span></a>
-                                    <a class="inline-block align-baseline font-bold text-sm text-blue-400 hover:text-blue-600" href="#">
+                                    @if (Route::has('password.request'))
+                                    <a class="inline-block align-baseline font-bold text-sm text-blue-400 hover:text-blue-600" href="{{ route('password.request') }}">
                                         Forgot Password?
                                     </a>
+                                    @endif
                                 </div>
                             </form>
 
@@ -169,7 +182,8 @@
                         </button>
 
                         <div class=" w-full ">
-                            <form class="bg-white rounded px-6 pt-6 pb-8 mb-4">
+                            <form method="POST" action="{{ route('register') }}" class="bg-white rounded px-6 pt-6 pb-8 mb-4">
+                                @csrf
                                 <div class="grid gap-x-6 grid-cols-2">
                                     <div class="col-span-1">
                                         <div class="relative mb-4">
@@ -182,34 +196,35 @@
                                         </div>
                                         <div class="relative mb-4">
                                             <label for="email" class="leading-7 text-sm text-gray-600">Password</label>
-                                            <input type="password" id="email" name="email" class="w-full bg-white rounded border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                            <input type="password" id="email" name="password" class="w-full bg-white rounded border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                         </div>
                                     </div>
                                     <div class="col-span-1">
                                         <div class="relative mb-4">
-                                            <label for="name" class="leading-7 text-sm text-gray-600">Username</label>
-                                            <input type="text" id="name" name="name" class="w-full bg-white rounded border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                            <label for="name" class="leading-7 text-sm text-gray-600">Phone Number</label>
+                                            <input type="text" id="name" name="phone_number" class="w-full bg-white rounded border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                         </div>
                                         <div class="relative mb-4">
                                             <label for="Address" class="leading-7 text-sm text-gray-600">Address</label>
-                                            <input type="text" id="Address" name="Address" class="w-full bg-white rounded border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                            <input type="text" id="Address" name="address" class="w-full bg-white rounded border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                         </div>
                                         <div class="relative mb-4">
-                                            <label for="email" class="leading-7 text-sm text-gray-600"> Confirm
-                                                Password</label>
-                                            <input type="password" id="email" name="email" class="w-full bg-white rounded border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                            <label for="email" class="leading-7 text-sm text-gray-600"> Confirm Password</label>
+                                            <input type="password" id="email" name="password_confirmation" class="w-full bg-white rounded border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="flex items-center justify-between">
                                     <button class="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                                        Login
+                                        Sign Up
                                     </button>
                                     <a @click.prevent="open=false,modal=true" href="#">Already have an account ? <span class="text-blue-400 font-semibold">Login Here</span></a>
-                                    <a class="inline-block align-baseline font-bold text-sm text-blue-400 hover:text-blue-600" href="#">
+                                    @if (Route::has('password.request'))
+                                    <a class="inline-block align-baseline font-bold text-sm text-blue-400 hover:text-blue-600" href="{{ route('password.request') }}">
                                         Forgot Password?
                                     </a>
+                                    @endif
                                 </div>
                             </form>
 
@@ -237,7 +252,7 @@
             </div>
         </div>
     </nav>
-  @yield('content')
+    @yield('content')
     <!-- Footer -->
     <footer class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">

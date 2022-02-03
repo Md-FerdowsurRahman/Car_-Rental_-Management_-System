@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::view('/acar', 'layouts.adminviews.add-new-car')->name('acar');
 Route::get('/car/{id}/edit', [DashboardController::class, 'EditCar'])->name('ecars');
 
@@ -27,7 +28,6 @@ Route::get('getform', [CarsController::class, 'getFormData'])->name('getform');
 //    return view('dashboard');
 //})->name('dashboard');
 
-Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::view('/contact', 'layouts.userviews.contact')->name('contact');
 Route::view('/services', 'layouts.userviews.services')->name('services');
 Route::view('/rent', 'layouts.userviews.rent')->name('rent');
