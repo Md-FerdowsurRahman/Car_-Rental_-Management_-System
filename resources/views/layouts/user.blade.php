@@ -51,34 +51,31 @@
                 <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex justify-between">
                         <div class="">
-                            <h2 class="text-xl font-bold uppercase">Rental Solution</h2>
+                            <a href="/">
+                                <h2 class="text-xl font-bold uppercase">Rental Solution</h2>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="hidden md:block">
                     <ul class="flex space-x-4 text-gray-500">
                         <li>
-                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="/">
+                            <a class="{{ (url()->current() == route('home'))?'text-blue-400 font-semibold hover:text-blue-600':'text-gray-800 hover:text-gray-800' }}" href="/">
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="{{route('cars')}}">
+                            <a class="{{ (url()->current() == route('cars'))?'text-blue-400 font-semibold hover:text-blue-600':'text-gray-800 hover:text-gray-800' }}" href="{{route('cars')}}">
                                 Cars
                             </a>
                         </li>
                         <li>
-                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="{{route('rent')}}">
-                                Rent
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="{{route('services')}}">
+                            <a class="{{ (url()->current() == route('services'))?'text-blue-400 font-semibold hover:text-blue-600':'text-gray-800 hover:text-gray-800' }}" href="{{route('services')}}">
                                 Services
                             </a>
                         </li>
                         <li>
-                            <a class="text-gray-800 font-semibold hover:text-gray-800" href="{{ route('contact') }}">
+                            <a class="{{ (url()->current() == route('contact'))?'text-blue-400 font-semibold hover:text-blue-600':'text-gray-800 hover:text-gray-800' }}" href="{{ route('contact') }}">
                                 Contact
                             </a>
                         </li>
@@ -399,7 +396,7 @@
             },
         });
     </script>
-@livewireScripts
+    @livewireScripts
 </body>
 
 </html>
