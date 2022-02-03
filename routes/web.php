@@ -32,7 +32,7 @@ Route::view('/contact', 'layouts.userviews.contact')->name('contact');
 Route::view('/services', 'layouts.userviews.services')->name('services');
 Route::view('/rent', 'layouts.userviews.rent')->name('rent');
 Route::view('/cars', 'layouts.userviews.cars')->name('cars');
-Route::group(['middleware' => 'auth'], function () {
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/profile', [HomeController::class, 'Profile'])->name('user.profile');
     Route::get('/cancel/{id}', [HomeController::class, 'CancelRent'])->name('rent.cancel');
 
@@ -54,7 +54,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 
         Route::get('/admin/rents', Rents::class)->name('rents');
-
 
 
 

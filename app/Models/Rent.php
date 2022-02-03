@@ -40,10 +40,10 @@ class Rent extends Model
     public function getCurrentRentStatusColorAttribute()
     {
         return [
-                '0'=>'bg-info',
-                '1'=>'bg-success',
-                '2'=>'Completed',
-                '3'=>'bg-danger',
+                '0'=>'bg-gray-500',
+                '1'=>'bg-blue-400',
+                '2'=>'bg-green-400',
+                '3'=>'bg-red-500',
             ][$this->rent_status] ?? "bg-info";
     }
     public function user()

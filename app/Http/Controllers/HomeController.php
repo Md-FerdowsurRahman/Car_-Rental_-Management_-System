@@ -24,10 +24,6 @@ class HomeController extends Controller
 
     public function Profile()
     {
-        if (!auth()->user()) {
-            return redirect('/');
-        }
-
         $user = auth()->user();
         $active_rents = Rent::Where([
 
@@ -46,16 +42,16 @@ class HomeController extends Controller
             ['rent_status', '!=', 2],
         ])
             ->orderBy('created_at', 'DESC')
-            ->whereDate('created_at', '>', \Carbon\Carbon::now()->subMonth())
+            ->whereDate('created_at', '>', \Carbon\Carbon::now()->subWeek())
             ->With('car')
             ->get();
-        //        dd($current_rents);
-
         return view('layouts.userviews.profile-page', compact('user', 'rents', 'current_rents', 'active_rents'));
     }
     public function CancelRent($id)
     {
-        Rent::destroy($id);
+        Rent::where('id', $id)->update([
+            'rent_status' => 3,
+        ]);
         return redirect()->back();
     }
 }
