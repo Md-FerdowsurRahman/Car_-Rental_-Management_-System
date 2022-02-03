@@ -26,7 +26,7 @@
                             </div>
                             <div class="p-3 space-y-1.5">
                                 <span class="px-6 rounded py-[1px] text-sm border border-blue-400">{{ $car->model_release }}</span>
-                                <a href="#" class="block text-xl font-semibold">
+                                <a href="{{ route('car.single',$car->slug) }}" class="block text-xl font-semibold">
                                     {{ $car->name }}
                                 </a>
                                 <div class="flex space-x-3 text-lg font-bold">
@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
                                 <div class="">
-                                    <a href="#" class="bg-blue-400 text-white block text-center py-1.5 rounded-sm">
+                                    <a href="{{ route('car.single',$car->slug) }}" class="bg-blue-400 text-white block text-center py-1.5 rounded-sm">
                                         Rent Now
                                     </a>
                                 </div>

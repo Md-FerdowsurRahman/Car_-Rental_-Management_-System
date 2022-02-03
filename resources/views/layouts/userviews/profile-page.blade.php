@@ -170,7 +170,7 @@
                         </div>
                         <div x-cloak x-show="openTab == 3">
                             <div class="border border-gray-300 px-6 py-3">
-                                @livewire('user-edit-section')
+                                <livewire:user-edit-section/>
                             </div>
                         </div>
                     </div>
