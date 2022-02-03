@@ -21,13 +21,6 @@ Route::view('/acar', 'layouts.adminviews.add-new-car')->name('acar');
 Route::get('/car/{id}/edit', [DashboardController::class, 'EditCar'])->name('ecars');
 
 Route::get('/car/{slug?}', [CarsController::class, 'ViewCarSinglePage'])->name('car.single');
-
-
-
-
-
-
-
 Route::get('getform', [CarsController::class, 'getFormData'])->name('getform');
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
