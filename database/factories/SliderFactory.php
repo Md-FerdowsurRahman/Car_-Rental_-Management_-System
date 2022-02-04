@@ -24,7 +24,7 @@ class SliderFactory extends Factory
         return [
             'car_id' => $this->faker->numberBetween(3,4),
             'slider_text' => $this->faker->text(40),
-            'slider_image_path' => "/user/assets/img/4-2-car-png-hd.png",
+            'slider_image_path' => "car2.png",
         ];
     }
 }

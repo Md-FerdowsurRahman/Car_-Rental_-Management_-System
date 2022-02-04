@@ -22,7 +22,7 @@ class BrandFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
+            'name' => "Brand-" . $this->faker->numberBetween(1, 100),
             'slug' => $this->faker->slug,
             'brand_details' => $this->faker->text(100),
         ];
