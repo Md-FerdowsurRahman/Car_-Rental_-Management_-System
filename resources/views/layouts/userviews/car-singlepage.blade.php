@@ -61,11 +61,11 @@
                 {{$car->car_details}}
             </div>
             <livewire:review-section :car="$car" />
-            
+
         </div>
-        @livewire('payment-section',['car'=> $car])
+        <livewire:payment-section :car="$car" />
         <!-- reserve -->
-        
+
     </div>
 </div>
 @endsection

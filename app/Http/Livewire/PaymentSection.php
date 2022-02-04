@@ -61,6 +61,14 @@ class PaymentSection extends Component
         //        if (!empty($this->rent_date) && !empty($this->return_date)){
         //            $this->Total_Days_And_Amount_To_Pay();
         //        }
+        $rent = Rent::where([
+            ['car_id', $this->car->id],
+            ['rent_date', '<=', $this->rent_date],
+            ['return_date', '>=', $this->rent_date],
+        ])->get();
+        if ($rent->count() > 0) {
+            return redirect()->back()->with('booked', 'This car Has reservation On these Days');
+        }
         $new_rent = Rent::create([
             'user_id' => auth()->user()->id,
             'rent_date' => $data['rent_date'],
