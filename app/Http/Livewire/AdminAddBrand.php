@@ -29,8 +29,8 @@ class AdminAddBrand extends Component
         ]);
 
       if($this->brand_light_image && $this->brand_dark_image){
-        $fileName = $this->brand_light_image->store('/','brands');
-        $fileName2 = $this->brand_dark_image->store('/','brands');
+        $fileName = $this->brand_light_image->store('/','images');
+        $fileName2 = $this->brand_dark_image->store('/','images');
       }else{
           $fileName ='';
           $fileName2 ='';

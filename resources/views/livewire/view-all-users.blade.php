@@ -43,7 +43,7 @@
                         <td class="text-center">{{$loop->iteration}}</td>
                         <td class="" style="width: 25%;">
                         <span>
-                          <img src="{{asset('adminFiles/dist/img/maskboy.png')}}" alt="rasel-image"
+                          <img src="{{ $user->profile_photo_url }}" alt="rasel-image"
                                style="width: 30px;margin: 0px 6px 0px 0px;border-radius: 5px;">
                         </span> {{$user->name}}</td>
                         <td class="text-wrap text-center" >{{$user->username}}</td>
@@ -53,7 +53,7 @@
                         <td class="text-center">
                             <span wire:click="changeStatus({{$user->id}})" class="badge p-2 {{$user->status_color}} " style="cursor: pointer;">{{$user->status}}</span></td>
                         <td class="text-info text-center"> <i class="fa fa-pencil-alt mr-2"></i>
-                            <a href="{{route('admin.user.edit',$user->username)}}" class="text-decoration-none">Edit</a></td>
+                            <a href="{{route('admin.user.edit',$user)}}" class="text-decoration-none">Edit</a></td>
                         <td class="text-danger text-center"> <i class="fa fa-trash-alt mr-2"></i>
                             <a href="#" class="text-decoration-none text-danger">Delete</a></td>
 
