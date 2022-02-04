@@ -3,19 +3,10 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReportController;
 use App\Http\Livewire\Admin\Rents;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::view('/acar', 'layouts.adminviews.add-new-car')->name('acar');
@@ -39,7 +30,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/cancel/{id}', [HomeController::class, 'CancelRent'])->name('rent.cancel');
 
     Route::group(['middleware' => 'role:admin'], function () {
-        Route::post('/message/delete/{message}',[DashboardController::class,'DeleteMessage'])->name('message.delete');
+        Route::post('/message/delete/{message}', [DashboardController::class, 'DeleteMessage'])->name('message.delete');
         Route::get('admin/messages', [DashboardController::class, 'ViewMessages'])->name('admin.messages');
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -59,6 +50,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
         Route::get('/admin/rents', Rents::class)->name('rents');
 
+        Route::get('/reports', [ReportController::class, 'index'])->name('reports');
+        Route::get('/get_report', [ReportController::class, 'getReport'])->name('report.get');
 
 
         //        Route::get('/car/{id}/edit',[DashboardController::class,'EditCar'])->name('admin.edit-car');

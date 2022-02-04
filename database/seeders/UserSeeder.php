@@ -25,6 +25,15 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('12345678'),
                 'role_id' => 1,
             ],
+            [
+                'name' => "Admin 2",
+                'email' => "admin@gmail.com",
+                'address' => "Uttara",
+                'phone_number' => "01781844900",
+                'email_verified_at' => now(),
+                'password' => bcrypt('password'),
+                'role_id' => 1,
+            ],
         ];
         User::insert($users);
     }
