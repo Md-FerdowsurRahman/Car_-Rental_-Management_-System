@@ -34,14 +34,9 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
-        'brands' => [
+        'images' => [
             'driver' => 'local',
-            'root' => public_path().'/brands',
-            'visibility' => 'public',
-        ],
-        'cars' => [
-            'driver' => 'local',
-            'root' => public_path().'/cars',
+            'root' => public_path().'/images',
             'visibility' => 'public',
         ],
 

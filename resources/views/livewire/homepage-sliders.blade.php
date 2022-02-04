@@ -53,7 +53,7 @@
                             </p>
                         </div>
                         <div class="">
-                            <img class="object-cover w-full h-auto" src="{{$slider->slider_image_path? asset('/cars/'.$slider->slider_image_path) : asset('userFiles/assets/img/3-2-car-free-download-png.png')}}" alt="Car Name">
+                            <img class="object-cover w-full h-auto" src="{{$slider->slider_image_path? asset('/images/'.$slider->slider_image_path) : asset('userFiles/assets/img/3-2-car-free-download-png.png')}}" alt="Car Name">
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@
                             <div class="space-y-3 ml-14">
                                 <div class=""><span class="text-2xl font-extrabold">${{ $slider->car->rent_amount }}</span> <sup class="text-sm font-bold">/ Day</sup></div>
                                 <div class="">
-                                    <a href="#" class="bg-blue-500 hover:bg-blue-600  text-white px-6 inline-block py-1.5 rounded-sm shadow">Reserve
+                                    <a href="{{ route('car.single',$slider->car->slug) }}" class="bg-blue-500 hover:bg-blue-600  text-white px-6 inline-block py-1.5 rounded-sm shadow">Reserve
                                         Now</a>
                                 </div>
                             </div>

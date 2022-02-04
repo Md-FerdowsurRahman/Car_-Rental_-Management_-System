@@ -80,7 +80,7 @@ class AdminAllSliders extends Component
         $data = $this->validate([
             'car_id'=>'required',
         ]);
-        $sliderImage = $this->slider_image_path ? $this->slider_image_path->store('/', 'cars') : '';
+        $sliderImage = $this->slider_image_path ? $this->slider_image_path->store('/', 'images') : '';
         $this->slider_text = $this->slider_text? $this->slider_text :'Select this car to have an ultimate comfort throughout your visit . As well as you can select from our other collection .';
 
         Slider::create([

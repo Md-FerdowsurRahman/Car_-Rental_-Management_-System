@@ -1,7 +1,12 @@
 @extends('layouts.user')
 @section('content')
-<div class="bg-gray-200">
-    <img class="w-full mx-auto h-[450px] object-contain" src="{{ asset('images/'.'/'.$car->image) }}" alt="{{ $car->name }}">
+<div class="bg-gray-200 relative">
+    <img class="w-full mx-auto h-[450px] object-contain" src="{{ asset('images/'.'/'.$car->car_image_single_page_view) }}" alt="{{ $car->name }}">
+    <div class="absolute right-0 transform -translate-x-12 translate-y-10 bottom-0">
+        <div class="p-4 bg-gray-100 w-36 h-36 rounded-b-lg border flex justify-center items-center">
+            <div class="text-6xl text-slate-600 font-extrabold">${{ $car->rent_amount }}</div>
+        </div>
+    </div>
 </div>
 <div class="w-full my-5 max-w-7xl mx-auto ">
     <div class="grid grid-cols-2 gap-x-4">

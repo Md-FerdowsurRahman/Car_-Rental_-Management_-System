@@ -60,7 +60,7 @@
     <div class="w-full my-5 max-w-6xl mx-auto ">
         <div class="grid grid-cols-2 gap-x-4">
             <div class="h-[420px] w-full overflow-hidden">
-                <img class="object-cover mt-3" src="images/range rover.png" alt="">
+                <img class="object-cover mt-3" src="{{ asset('images/services.png') }}" alt="">
             </div>
             <div class="h-40 w-full">
                 <h6 class="text-gray-500 font-semibold tracking-widest">Best Services</h6>
