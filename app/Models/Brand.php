@@ -19,8 +19,8 @@ class Brand extends Model
     public function cars()
     {
         return $this->hasMany(Car::class)
-                    ->Where('cars_availability',1)
-                    ->orderBy('id', 'desc')
-                    ->limit(4);
+            ->Where('cars_availability', 1)
+            ->orderBy('id', 'desc')
+            ->limit(9);
     }
 }
