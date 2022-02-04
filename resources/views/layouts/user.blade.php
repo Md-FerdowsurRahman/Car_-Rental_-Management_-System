@@ -60,7 +60,7 @@
                 <div class="hidden md:block">
                     <ul class="flex space-x-4 text-gray-500">
                         <li>
-                            <a class="{{ (url()->current() == route('home'))?'text-blue-400 font-semibold hover:text-blue-600':'text-gray-800 hover:text-gray-800' }}" href="/">
+                            <a class="{{ (url()->current() == route('/'))?'text-blue-400 font-semibold hover:text-blue-600':'text-gray-800 hover:text-gray-800' }}" href="/">
                                 Home
                             </a>
                         </li>

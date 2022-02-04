@@ -76,7 +76,7 @@
                                                                 {{ $rent->car->name }}
                                                             </td>
                                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                                {{ $rent->rent_amount }}
+                                                                ${{ $rent->rent_amount }}<span class="ml-2 text-slate-400 text-sm font-semibold">{{ $rent->payment }}</span>
                                                             </td>
                                                             <td class="px-6 py-4 whitespace-nowrap">
                                                                 {{ $rent->rent_date->format('d M Y') }}
@@ -145,7 +145,7 @@
                                                                 {{ $rent->car->name }}
                                                             </td>
                                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                                {{ $rent->rent_amount }}
+                                                                ${{ $rent->rent_amount }}<span class="ml-2 text-slate-400 text-sm font-semibold">{{ $rent->payment }}</span>
                                                             </td>
                                                             <td class="px-6 py-4 whitespace-nowrap">
                                                                 {{ $rent->rent_date->format('d M Y') }}
@@ -170,7 +170,7 @@
                         </div>
                         <div x-cloak x-show="openTab == 3">
                             <div class="border border-gray-300 px-6 py-3">
-                                <livewire:user-edit-section/>
+                                <livewire:user-edit-section />
                             </div>
                         </div>
                     </div>

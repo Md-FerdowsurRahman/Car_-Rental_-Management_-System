@@ -21,6 +21,7 @@ class CreateRentsTable extends Migration
             $table->foreignId('rent_place_id')->references('id')->on('rent_places');
             $table->foreignId('return_place_id')->references('id')->on('rent_places');
             $table->string('rent_amount');
+            $table->tinyInteger('payment_method')->default('0');
             $table->foreignId('car_id')->constrained();
             $table->timestamps();
         });

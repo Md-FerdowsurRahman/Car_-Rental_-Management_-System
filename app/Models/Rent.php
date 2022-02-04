@@ -18,7 +18,7 @@ class Rent extends Model
         'car_id',
     ];
     protected $dates = [
-        'created_at',
+        'created_at', 
         'updated_at',
         'rent_date',
         'return_date',
@@ -31,20 +31,27 @@ class Rent extends Model
     public function getCurrentRentStatusAttribute()
     {
         return [
-                '0'=>'Under Review',
-                '1'=>'Aproved',
-                '2'=>'Completed',
-                '3'=>'Cancelled',
-            ][$this->rent_status] ?? "Under Review";
+            '0' => 'Under Review',
+            '1' => 'Aproved',
+            '2' => 'Completed',
+            '3' => 'Cancelled',
+        ][$this->rent_status] ?? "Under Review";
+    }
+    public function getPaymentAttribute()
+    {
+        return [
+            '0' => 'Cash On Delivery',
+            '1' => 'Card Payment',
+        ][$this->payment_method] ?? "Under Review";
     }
     public function getCurrentRentStatusColorAttribute()
     {
         return [
-                '0'=>'bg-gray-500',
-                '1'=>'bg-blue-400',
-                '2'=>'bg-green-400',
-                '3'=>'bg-red-500',
-            ][$this->rent_status] ?? "bg-info";
+            '0' => 'bg-gray-500',
+            '1' => 'bg-blue-400',
+            '2' => 'bg-green-400',
+            '3' => 'bg-red-500',
+        ][$this->rent_status] ?? "bg-info";
     }
     public function user()
     {
@@ -52,10 +59,10 @@ class Rent extends Model
     }
     public function rentplace()
     {
-        return $this->hasOne(RentPlace::class,'id','rent_place_id');
+        return $this->hasOne(RentPlace::class, 'id', 'rent_place_id');
     }
     public function returnplace()
     {
-        return $this->hasOne(RentPlace::class,'id','return_place_id');
+        return $this->hasOne(RentPlace::class, 'id', 'return_place_id');
     }
 }

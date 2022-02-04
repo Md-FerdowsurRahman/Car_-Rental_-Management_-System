@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::view('/acar', 'layouts.adminviews.add-new-car')->name('acar');
 Route::get('/car/{id}/edit', [DashboardController::class, 'EditCar'])->name('ecars');
 
