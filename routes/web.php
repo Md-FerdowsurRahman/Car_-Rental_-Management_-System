@@ -52,7 +52,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
         Route::get('/reports', [ReportController::class, 'index'])->name('reports');
         Route::get('/get_report', [ReportController::class, 'getReport'])->name('report.get');
-
+        Route::post('/pdf/download', [ReportController::class, 'downloadPdf'])->name('report.generate');
 
         //        Route::get('/car/{id}/edit',[DashboardController::class,'EditCar'])->name('admin.edit-car');
     });

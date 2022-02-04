@@ -33,7 +33,7 @@
                                 <div class="row">
                                     <div class="col-md-12" style="margin-bottom: 5px;">
                                         <button type="button" onClick="Download('divToPrint');" class="btn btn-secondary float-right" id="print"><i class="fa fa-print"></i> Print</button>
-                                        <form action="#" method="POST">
+                                        <form action="{{ route('report.generate') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="from" value="{{ request()?->from }}">
                                             <input type="hidden" name="to" value="{{ request()?->to }}">

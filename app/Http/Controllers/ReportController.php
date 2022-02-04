@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rent;
 use Illuminate\Http\Request;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class ReportController extends Controller
 {
     public function index()
@@ -32,19 +32,19 @@ class ReportController extends Controller
     {
         // dd($request->all());
         if ($request->status) {
-            $parcels = Parcel::with(['user', 'sendBranch', 'receiveBranch'])
+            $rents = Rent::with(['user', 'car', 'rentplace', 'returnplace'])
                 ->whereBetween('created_at', [$request->from, $request->to])
-                ->where('status', $request->status)
+                ->where('rent_status', $request->status)
                 ->get();
         } else {
-            $parcels = Parcel::with(['user', 'sendBranch', 'receiveBranch'])
+            $rents = Rent::with(['user', 'car', 'rentplace', 'returnplace'])
                 ->whereBetween('created_at', [$request->from, $request->to])
                 ->get();
         }
         // dump($parcels->toArray());
         // dump($request->parcels?->toArray());
-        $data = $parcels->toArray();
-        view()->share('parcels', $parcels);
+        $data = $rents->toArray();
+        view()->share('rents', $rents);
         $pdf = PDF::loadView('report', $data);
         return $pdf->download('report_' . now()->format('Y/m/d h:i A') . '.pdf');
     }
